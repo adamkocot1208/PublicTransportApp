@@ -4,6 +4,18 @@ namespace PublicTransportApp
 {
     public interface ICourse
     {
+        string Type { get; }
 
+        string LineNumber { get; }
+
+        int CourseNumber { get; }
+
+        void AddNumberOfPassangers(int value);
+
+        void AddNumberOfPassangers(string value);
+
+        Statistics GetStatistics();
+
+        public event VehicleCapacityIsExceededDelegade VehicleCapacityIsExceeded;
     }
 }
