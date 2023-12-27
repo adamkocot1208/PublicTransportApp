@@ -8,7 +8,7 @@ namespace PublicTransportApp
 
         string LineNumber { get; }
 
-        int CourseNumber { get; }
+        string CourseNumber { get; }
 
         void AddNumberOfPassangers(int value);
 

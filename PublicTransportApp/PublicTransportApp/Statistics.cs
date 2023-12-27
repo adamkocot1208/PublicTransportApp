@@ -2,7 +2,7 @@
 {
     public class Statistics
     {
-        private int capacity = 100;
+        public int capacity {  get; set; }
         public int Min { get; private set; }
 
         public int Max { get; private set; }
@@ -35,12 +35,28 @@
             }
         }
 
-        public Statistics()
+        public Statistics(string type)
         {
             this.Sum = 0;
             this.Counter = 0;
             this.Min = int.MaxValue;
             this.Max = int.MinValue;
+            if (type == "B")
+            {
+                capacity = TransportCapacity.BusCapacity;
+            }
+            else if (type == "M")
+            {
+                capacity = TransportCapacity.MetroCapacity;
+            }
+            else if (type == "S")
+            {
+                capacity = TransportCapacity.TramCapacity;
+            }
+            else if (type == "T")
+            {
+                capacity = TransportCapacity.TrainCapacity;
+            }
         }
 
         public void AddNumberOfPassangers(int value)

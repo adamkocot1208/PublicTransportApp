@@ -4,7 +4,7 @@
     {
         private List<int> numberOfPassengers = new List<int>();
 
-        public CourseInMemory(string type, string lineNumber, int courseNumber) 
+        public CourseInMemory(string type, string lineNumber, string courseNumber) 
             : base(type, lineNumber, courseNumber)
         {
         }
@@ -16,6 +16,22 @@
             if (value >= 0)
             {
                 this.numberOfPassengers.Add(value);
+                if(this.Type == "B" && value > TransportCapacity.BusCapacity)
+                {
+                    CheckEventVehicleCapacityIsExceeded();
+                }
+                else if (this.Type == "M" && value > TransportCapacity.MetroCapacity)
+                {
+                    CheckEventVehicleCapacityIsExceeded();
+                }
+                else if (this.Type == "S" && value > TransportCapacity.TramCapacity)
+                {
+                    CheckEventVehicleCapacityIsExceeded();
+                }
+                else if (this.Type == "T" && value > TransportCapacity.TrainCapacity)
+                {
+                    CheckEventVehicleCapacityIsExceeded();
+                }
             }
             else
             {
@@ -37,7 +53,7 @@
 
         public override Statistics GetStatistics()
         {
-            var stats = new Statistics();
+            var stats = new Statistics(Type);
 
             foreach (var number in  this.numberOfPassengers)
             {
@@ -47,6 +63,25 @@
             return stats;
         }
 
+        public override void Results()
+        {
+            var stats = GetStatistics();
+            if (stats.Counter > 0)
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine($"Stats for course {Type}{LineNumber}_{CourseNumber}");
+                Console.Write($"There are {stats.Counter} correct ratings given: ");
+                foreach (var number in this.numberOfPassengers)
+                {  
+                    Console.Write($"{number}, "); 
+                }
+                Console.WriteLine($"\nMinimal value: {stats.Min}");
+                Console.WriteLine($"Maximum value: {stats.Max}");
+                Console.WriteLine($"Average value: {stats.Average:N2}");
+                Console.WriteLine($"{stats.AverageType}");
+            }
+        }
+
         protected void CheckEventVehicleCapacityIsExceeded()
         {
             if (VehicleCapacityIsExceeded != null)
@@ -54,5 +89,6 @@
                 VehicleCapacityIsExceeded(this, new EventArgs());
             }
         }
+
     }
 }

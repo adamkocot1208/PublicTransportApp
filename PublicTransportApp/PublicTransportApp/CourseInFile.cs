@@ -1,8 +1,6 @@
-﻿// zakomentowany zeby sie nic nie psulo -> do napisania w poźniejszym terminie
-
-//namespace PublicTransportApp
+﻿//namespace PublicTransportApp
 //{
-//    public class CourseInFile:CourseBase
+//    public class CourseInFile : CourseBase
 //    {
 
 //    }

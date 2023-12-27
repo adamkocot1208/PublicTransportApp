@@ -6,9 +6,9 @@
 
         public string LineNumber { get; private set; }
 
-        public int CourseNumber { get; private set; }
+        public string CourseNumber { get; private set; }
 
-        public CourseBase(string type, string lineNumber, int courseNumber)
+        public CourseBase(string type, string lineNumber, string courseNumber)
         {
             this.Type = type;
             this.LineNumber = lineNumber;
@@ -20,6 +20,8 @@
         public abstract void AddNumberOfPassangers(string value);
 
         public abstract Statistics GetStatistics();
+
+        public abstract void Results();
 
         public delegate void VehicleCapacityIsExceededDelegade(object sender, EventArgs args);
 
