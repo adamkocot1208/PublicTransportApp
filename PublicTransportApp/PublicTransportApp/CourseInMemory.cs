@@ -75,10 +75,11 @@
                 {  
                     Console.Write($"{number}, "); 
                 }
+                //ostatnia wartość drukuje sie z przecinkiem
                 Console.WriteLine($"\nMinimal value: {stats.Min}");
                 Console.WriteLine($"Maximum value: {stats.Max}");
                 Console.WriteLine($"Average value: {stats.Average:N2}");
-                Console.WriteLine($"{stats.AverageType}");
+                Console.WriteLine($"Course {Type}{LineNumber}_{CourseNumber} is with {stats.AverageType}");
             }
         }
 

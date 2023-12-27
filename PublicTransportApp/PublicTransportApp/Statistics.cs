@@ -26,11 +26,11 @@
                 switch (this.Average)
                 {
                     case var avg when avg > 1.5 * capacity:
-                        return "Course with excessive filling.";
+                        return "excessive filling.";
                     case var avg when avg >= 0.5 * capacity:
-                        return "Course with normal filling.";
+                        return "normal filling.";
                     default:
-                        return "Course with insufficient filling.";
+                        return "insufficient filling.";
                 }
             }
         }

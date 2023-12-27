@@ -25,14 +25,12 @@ do
     {
         case "1":
             {
-                Console.WriteLine("Wybrano 1.");
                 AddValueToMemory();
                 break;
             }
         case "2":
             {
-                Console.WriteLine("Wybrano 2.");
-                //AddValueToFile()
+                AddValueToFile();
                 break;
             }
         case "x":
@@ -65,16 +63,16 @@ static void AddValueToMemory()
     courseMemory.Results();
 }
 
-//static void AddValueToFile()
-//{
-//    string type = AddType();
-//    string lineNumber = AddLineNumber();
-//    string courseNumber = AddCourseNumber();
-//    var courseInFile = new CourseInFile(type, lineNumber, courseNumber);
-//    courseInFile.VehicleCapacityIsExceeded += OnVehicleCapacityIsExceeded;
-//    AddValue(courseInFile);
-//    courseInFile.Results();
-//}
+static void AddValueToFile()
+{
+    string type = AddType();
+    string lineNumber = AddLineNumber();
+    string courseNumber = AddCourseNumber();
+    var courseInFile = new CourseInFile(type, lineNumber, courseNumber);
+    courseInFile.VehicleCapacityIsExceeded += OnVehicleCapacityIsExceeded;
+    AddValue(courseInFile);
+    courseInFile.Results();
+}
 
 static string AddType()
 {
@@ -83,7 +81,7 @@ static string AddType()
 
     do
     {
-        Console.WriteLine("Select the type of transportation by entering the appropriate letter:\n" +
+        Console.WriteLine("\nSelect the type of transportation by entering the appropriate letter:\n" +
             "B - bus    M - metro   S - tram    T - train");
 
         type = Console.ReadLine();
@@ -97,10 +95,10 @@ static string AddType()
                 validType = true;
                 break;
             case "":
-                Console.WriteLine("\n!!! Type of transport cannot be empty !!!");
+                Console.WriteLine("\n!!! ERROR: Type of transport cannot be empty !!!");
                 break;
             default:
-                Console.WriteLine("\n!!! Incorrect type of transport has been selected !!!");
+                Console.WriteLine("\n!!! ERROR: Incorrect type of transport has been selected !!!");
                 break;
         }
 
@@ -116,12 +114,12 @@ static string AddLineNumber()
 
     do
     {
-        Console.WriteLine("Provide the line number:");
+        Console.WriteLine("\nProvide the line number:");
         lineNumber = Console.ReadLine();
 
         if (string.IsNullOrEmpty(lineNumber))
         {
-            Console.WriteLine("\n!!! Line number of transport cannot be empty !!!");
+            Console.WriteLine("\n!!! ERROR: Line number of transport cannot be empty !!!");
         }
         else
         {
@@ -156,7 +154,6 @@ static string AddCourseNumber()
                 case "N":
                     break;
                 default:
-                    Console.WriteLine("\nPlease select Y - yes or N - no");
                     break;
             }
         }
@@ -171,7 +168,7 @@ static string AddCourseNumber()
 
 static void AddValue(ICourse course)
 {
-    Console.WriteLine("\nEnter the number of passengers:\n");
+    Console.WriteLine("\nEnter the number of passengers:");
 
     while (true)
     {
@@ -190,7 +187,7 @@ static void AddValue(ICourse course)
             Console.WriteLine($"Error occurred : {ex.Message}");
         }
 
-        Console.WriteLine("Enter next value or end the entry by pressing 'E'");
+        Console.WriteLine("\nEnter next value or end the entry by pressing 'E'");
     }
 }
 
