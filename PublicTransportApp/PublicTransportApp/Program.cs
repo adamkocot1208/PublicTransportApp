@@ -114,7 +114,7 @@ static string AddLineNumber()
     do
     {
         Console.WriteLine("\nProvide the line number:");
-        lineNumber = Console.ReadLine();
+        lineNumber = Console.ReadLine().Trim();
 
         if (string.IsNullOrEmpty(lineNumber))
         {
@@ -137,7 +137,7 @@ static string AddCourseNumber()
     do
     {
         Console.WriteLine("\nProvide the course number:");
-        courseNumber = Console.ReadLine();
+        courseNumber = Console.ReadLine().Trim();
 
         if (string.IsNullOrEmpty(courseNumber) || courseNumber.Length != 6)
         {
