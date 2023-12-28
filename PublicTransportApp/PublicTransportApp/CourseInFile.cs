@@ -98,7 +98,7 @@
             {
                 Console.WriteLine(" ");
                 Console.WriteLine($"Stats for course {Type}{LineNumber}_{CourseNumber}");
-                Console.Write($"There are {stats.Counter} correct ratings given: ");
+                Console.Write($"There are {stats.Counter} correct values given: ");
                 using (var reader = File.OpenText($"{fileName}"))
                 {
                     var line = reader.ReadLine();

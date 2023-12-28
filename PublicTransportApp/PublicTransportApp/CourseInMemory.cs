@@ -77,7 +77,7 @@
             {
                 Console.WriteLine(" ");
                 Console.WriteLine($"Stats for course {Type}{LineNumber}_{CourseNumber}");
-                Console.Write($"There are {stats.Counter} correct ratings given: ");
+                Console.Write($"There are {stats.Counter} correct values given: ");
                 foreach (var number in this.numberOfPassengers)
                 {  
                     Console.Write($" {number};"); 
