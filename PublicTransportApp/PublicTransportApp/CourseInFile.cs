@@ -53,7 +53,14 @@
             }
             else
             {
-                throw new ArgumentException($"{value} is not a number.");
+                if (value == "")
+                {
+                    throw new Exception("' ' is not a valid number.");
+                }
+                else
+                {
+                    throw new Exception($"{value} is not a valid number.");
+                }
             }
         }
 
@@ -97,15 +104,19 @@
                     var line = reader.ReadLine();
                     while (line != null)
                     {
-                        Console.Write($"{line}, ");
+                        Console.Write($" {line};");
                         line = reader.ReadLine();
                     }
                 }
-                //ostatnia linia drukuje sie z przecinkiem
                 Console.WriteLine($"\nMinimal value: {stats.Min}");
                 Console.WriteLine($"Maximum value: {stats.Max}");
                 Console.WriteLine($"Average value: {stats.Average:N2}");
                 Console.WriteLine($"Course {Type}{LineNumber}_{CourseNumber} is with {stats.AverageType}");
+            }
+            else
+            {
+                Console.WriteLine($"\nStats for course {Type}{LineNumber}_{CourseNumber}");
+                Console.WriteLine("No value was given. Statistics cannot be calculated for this course.");
             }
         }
 

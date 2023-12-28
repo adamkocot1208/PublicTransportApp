@@ -46,8 +46,15 @@
                 this.AddNumberOfPassangers(number);
             }
             else
-            { 
-                throw new ArgumentException($"{value} is not a number."); 
+            {
+                if (value == "")
+                {
+                    throw new Exception("' ' is not a valid number.");
+                }
+                else
+                {
+                    throw new Exception($"{value} is not a valid number.");
+                }
             }
         }
 
@@ -73,13 +80,17 @@
                 Console.Write($"There are {stats.Counter} correct ratings given: ");
                 foreach (var number in this.numberOfPassengers)
                 {  
-                    Console.Write($"{number}, "); 
+                    Console.Write($" {number};"); 
                 }
-                //ostatnia wartość drukuje sie z przecinkiem
                 Console.WriteLine($"\nMinimal value: {stats.Min}");
                 Console.WriteLine($"Maximum value: {stats.Max}");
                 Console.WriteLine($"Average value: {stats.Average:N2}");
                 Console.WriteLine($"Course {Type}{LineNumber}_{CourseNumber} is with {stats.AverageType}");
+            }
+            else
+            {
+                Console.WriteLine($"\nStats for course {Type}{LineNumber}_{CourseNumber}");
+                Console.WriteLine("No value was given. Statistics cannot be calculated for this course.");
             }
         }
 

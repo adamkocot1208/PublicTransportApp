@@ -1,5 +1,4 @@
 ﻿using PublicTransportApp;
-using System.ComponentModel.DataAnnotations;
 
 Console.WriteLine("#############################################");
 Console.WriteLine("#                                           #");
@@ -41,7 +40,7 @@ do
             }
         default:
             {
-                Console.WriteLine("\n!!! This operation is not allowed !!!\n");
+                Console.WriteLine("\n!!! ERROR !!! This operation is not allowed.\n");
                 break;
             }
     }
@@ -95,10 +94,10 @@ static string AddType()
                 validType = true;
                 break;
             case "":
-                Console.WriteLine("\n!!! ERROR: Type of transport cannot be empty !!!");
+                Console.WriteLine("\n!!! ERROR !!! Type of transport cannot be empty.");
                 break;
             default:
-                Console.WriteLine("\n!!! ERROR: Incorrect type of transport has been selected !!!");
+                Console.WriteLine("\n!!! ERROR !!! Incorrect type of transport has been selected.");
                 break;
         }
 
@@ -119,7 +118,7 @@ static string AddLineNumber()
 
         if (string.IsNullOrEmpty(lineNumber))
         {
-            Console.WriteLine("\n!!! ERROR: Line number of transport cannot be empty !!!");
+            Console.WriteLine("\n!!! ERROR !!! Line number of transport cannot be empty.");
         }
         else
         {
@@ -142,7 +141,7 @@ static string AddCourseNumber()
 
         if (string.IsNullOrEmpty(courseNumber) || courseNumber.Length != 6)
         {
-            Console.WriteLine("\nAre you sure you entered the correct course number?" +
+            Console.WriteLine("\nAre you sure you entered the correct course number? (the number should contain 6 characters)" +
                 "\nChoose Y - yes or N - no");
             var input = Console.ReadLine().ToUpper();
 
@@ -184,7 +183,7 @@ static void AddValue(ICourse course)
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error occurred : {ex.Message}");
+            Console.WriteLine($"!!! ERROR !!! {ex.Message}");
         }
 
         Console.WriteLine("\nEnter next value or end the entry by pressing 'E'");
@@ -193,5 +192,5 @@ static void AddValue(ICourse course)
 
 static void OnVehicleCapacityIsExceeded(object sender, EventArgs args)
 {
-    Console.WriteLine("The vehicle's capacity has been exceeded!!!");
+    Console.WriteLine("\n!!! ATTENTION !!! The vehicle's capacity has been exceeded!");
 }
