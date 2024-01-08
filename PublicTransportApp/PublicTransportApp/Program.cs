@@ -24,12 +24,14 @@ do
     {
         case "1":
             {
-                AddValueToMemory();
+                var course = new CourseInMemory(AddType(), AddLineNumber(), AddCourseNumber());
+                AddValueAboutCourse(course);
                 break;
             }
         case "2":
             {
-                AddValueToFile();
+                var course = new CourseInFile(AddType(), AddLineNumber(), AddCourseNumber());
+                AddValueAboutCourse(course);
                 break;
             }
         case "x":
@@ -51,26 +53,11 @@ Console.WriteLine(
     "Press any key to leave.");
 Console.ReadKey();
 
-static void AddValueToMemory()
+static void AddValueAboutCourse(ICourse course)
 {
-    string type = AddType();
-    string lineNumber = AddLineNumber();
-    string courseNumber = AddCourseNumber();
-    var courseMemory = new CourseInMemory(type, lineNumber, courseNumber);
-    courseMemory.VehicleCapacityIsExceeded += OnVehicleCapacityIsExceeded;
-    AddValue(courseMemory);
-    courseMemory.ShowResults();
-}
-
-static void AddValueToFile()
-{
-    string type = AddType();
-    string lineNumber = AddLineNumber();
-    string courseNumber = AddCourseNumber();
-    var courseInFile = new CourseInFile(type, lineNumber, courseNumber);
-    courseInFile.VehicleCapacityIsExceeded += OnVehicleCapacityIsExceeded;
-    AddValue(courseInFile);
-    courseInFile.ShowResults();
+    course.VehicleCapacityIsExceeded += OnVehicleCapacityIsExceeded;
+    AddValue(course);
+    course.ShowResults();
 }
 
 static string AddType()

@@ -86,7 +86,7 @@
             }
         }
 
-        public override void CheckEventVehicleCapacityIsExceeded(int value)
+        protected override void CheckEventVehicleCapacityIsExceeded(int value)
         {
             if (VehicleCapacityIsExceeded != null && IsExceededVehicleCapacity(value))
             {

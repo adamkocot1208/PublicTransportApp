@@ -44,7 +44,7 @@
 
         public abstract event VehicleCapacityIsExceededDelegade VehicleCapacityIsExceeded;
 
-        public abstract void CheckEventVehicleCapacityIsExceeded(int value);
+        protected abstract void CheckEventVehicleCapacityIsExceeded(int value);
 
         public bool IsExceededVehicleCapacity(int value)
         {

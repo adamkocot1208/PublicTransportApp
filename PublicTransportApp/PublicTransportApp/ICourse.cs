@@ -14,6 +14,8 @@ namespace PublicTransportApp
 
         void AddNumberOfPassangers(string value);
 
+        void ShowResults();
+
         Statistics GetStatistics();
 
         public event VehicleCapacityIsExceededDelegade VehicleCapacityIsExceeded;
