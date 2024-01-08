@@ -16,45 +16,11 @@
             if (value >= 0)
             {
                 this.numberOfPassengers.Add(value);
-                if(this.Type == "B" && value > TransportCapacity.BusCapacity)
-                {
-                    CheckEventVehicleCapacityIsExceeded();
-                }
-                else if (this.Type == "M" && value > TransportCapacity.MetroCapacity)
-                {
-                    CheckEventVehicleCapacityIsExceeded();
-                }
-                else if (this.Type == "S" && value > TransportCapacity.TramCapacity)
-                {
-                    CheckEventVehicleCapacityIsExceeded();
-                }
-                else if (this.Type == "T" && value > TransportCapacity.TrainCapacity)
-                {
-                    CheckEventVehicleCapacityIsExceeded();
-                }
+                CheckEventVehicleCapacityIsExceeded(value);
             }
             else
             {
                 throw new Exception($"{value} is not a valid number.");
-            }
-        }
-
-        public override void AddNumberOfPassangers(string value)
-        {
-            if (int.TryParse(value, out int number))
-            {
-                this.AddNumberOfPassangers(number);
-            }
-            else
-            {
-                if (value == "")
-                {
-                    throw new Exception("' ' is not a valid number.");
-                }
-                else
-                {
-                    throw new Exception($"{value} is not a valid number.");
-                }
             }
         }
 
@@ -70,7 +36,7 @@
             return stats;
         }
 
-        public override void Results()
+        public override void ShowResults()
         {
             var stats = GetStatistics();
             if (stats.Counter > 0)
@@ -94,9 +60,9 @@
             }
         }
 
-        protected void CheckEventVehicleCapacityIsExceeded()
+        public override void CheckEventVehicleCapacityIsExceeded(int value)
         {
-            if (VehicleCapacityIsExceeded != null)
+            if (VehicleCapacityIsExceeded != null && IsExceededVehicleCapacity(value))
             {
                 VehicleCapacityIsExceeded(this, new EventArgs());
             }

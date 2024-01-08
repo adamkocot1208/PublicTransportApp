@@ -2,7 +2,7 @@
 {
     public class Statistics
     {
-        public int capacity {  get; set; }
+        private int capacity;
         public int Min { get; private set; }
 
         public int Max { get; private set; }

@@ -59,7 +59,7 @@ static void AddValueToMemory()
     var courseMemory = new CourseInMemory(type, lineNumber, courseNumber);
     courseMemory.VehicleCapacityIsExceeded += OnVehicleCapacityIsExceeded;
     AddValue(courseMemory);
-    courseMemory.Results();
+    courseMemory.ShowResults();
 }
 
 static void AddValueToFile()
@@ -70,7 +70,7 @@ static void AddValueToFile()
     var courseInFile = new CourseInFile(type, lineNumber, courseNumber);
     courseInFile.VehicleCapacityIsExceeded += OnVehicleCapacityIsExceeded;
     AddValue(courseInFile);
-    courseInFile.Results();
+    courseInFile.ShowResults();
 }
 
 static string AddType()

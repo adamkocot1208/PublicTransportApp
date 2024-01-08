@@ -17,15 +17,50 @@
 
         public abstract void AddNumberOfPassangers(int value);
 
-        public abstract void AddNumberOfPassangers(string value);
+        public void AddNumberOfPassangers(string value)
+        {
+            if (int.TryParse(value, out int number))
+            {
+                this.AddNumberOfPassangers(number);
+            }
+            else
+            {
+                if (value == "")
+                {
+                    throw new Exception("' ' is not a valid number.");
+                }
+                else
+                {
+                    throw new Exception($"{value} is not a valid number.");
+                }
+            }
+        }
 
         public abstract Statistics GetStatistics();
 
-        public abstract void Results();
+        public abstract void ShowResults();
 
         public delegate void VehicleCapacityIsExceededDelegade(object sender, EventArgs args);
 
         public abstract event VehicleCapacityIsExceededDelegade VehicleCapacityIsExceeded;
 
+        public abstract void CheckEventVehicleCapacityIsExceeded(int value);
+
+        public bool IsExceededVehicleCapacity(int value)
+        {
+            switch (Type)
+            {
+                case "B":
+                    return value > TransportCapacity.BusCapacity;
+                case "M":
+                    return value > TransportCapacity.MetroCapacity;
+                case "S":
+                    return value > TransportCapacity.TramCapacity;
+                case "T":
+                    return value > TransportCapacity.TrainCapacity;
+                default:
+                    throw new ArgumentException($"Invalid transport type: {Type}");
+            }
+        }
     }
 }
